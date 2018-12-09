@@ -26,7 +26,7 @@ import java.util.Arrays;
  * */
 public class MaximumGap {
     public int maximumGap(int[] nums) {
-        if (nums==null||nums.length<2){
+        if (nums == null || nums.length < 2) {
             return 0;
         }
 
@@ -43,26 +43,26 @@ public class MaximumGap {
         // 每个桶之间的差值
         // k-th bucket contains all numbers in [min + (k-1)gap, min + k*gap).
         // 需要在每个桶中找出局部最大值和最小值，而最大间距的两个数不会在同一个桶中，而是一个桶的最小值和另一个桶的最大值之间的间距。
-        int gap = (int) Math.ceil((double)(max-min)/(nums.length-1));
+        int gap = (int) Math.ceil((double) (max - min) / (nums.length - 1));
 
-        int[] bucketMin = new int[nums.length-1];
-        int[] bucketMax = new int[nums.length-1];
+        int[] bucketMin = new int[nums.length - 1];
+        int[] bucketMax = new int[nums.length - 1];
 
-        Arrays.fill(bucketMin,Integer.MAX_VALUE);
-        Arrays.fill(bucketMax,Integer.MIN_VALUE);
+        Arrays.fill(bucketMin, Integer.MAX_VALUE);
+        Arrays.fill(bucketMax, Integer.MIN_VALUE);
 
 
         // 把数存放到各个bucket中，因为只需要获得最小值和最大值的间距，
         // 所以每个bucket只需要存放最大值和最小值
-        for(int num:nums){
-            if (num==min|| num==max){
+        for (int num : nums) {
+            if (num == min || num == max) {
                 continue;
             }
 
             // index为需要放入哪一个bucket
-            int index = (num-min)/gap;
-            bucketMin[index] = Math.min(bucketMin[index],num);  // 当前bucket里面的最小值
-            bucketMax[index] = Math.max(bucketMax[index],num);  // 当前bucket里面的最大值
+            int index = (num - min) / gap;
+            bucketMin[index] = Math.min(bucketMin[index], num);  // 当前bucket里面的最小值
+            bucketMax[index] = Math.max(bucketMax[index], num);  // 当前bucket里面的最大值
         }
 
         // 用于记录最大的间距
@@ -70,18 +70,18 @@ public class MaximumGap {
 
         int previous = min;
 
-        for(int i=0;i<nums.length-1;i++)
-        {
-            if (bucketMax[i]==Integer.MIN_VALUE && bucketMin[i]==Integer.MAX_VALUE){
+        for (int i = 0; i < nums.length - 1; i++) {
+            if (bucketMax[i] == Integer.MIN_VALUE && bucketMin[i] == Integer.MAX_VALUE) {
                 // empty bucket
                 continue;
             }
 
-            maxGap = Math.max(maxGap,bucketMin[i]-previous);
+            // min value minus the previous value is the current gap
+            maxGap = Math.max(maxGap, bucketMin[i] - previous);
             previous = bucketMax[i];
         }
 
-        maxGap = Math.max(maxGap,max-previous);
+        maxGap = Math.max(maxGap, max - previous);
 
         return maxGap;
     }
