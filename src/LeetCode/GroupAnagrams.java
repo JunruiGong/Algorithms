@@ -72,6 +72,8 @@ public class GroupAnagrams {
 
             for (int i = 0; i < count.length; i++) {
                 if (count[i] != 0) {
+
+                    // 以"eat"为例，处理之后的s="1a1e1t"，根据s来判断字符串是否相等
                     s += String.valueOf(count[i]) + String.valueOf((char)(i + 'a'));
                 }
             }
