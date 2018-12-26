@@ -43,7 +43,7 @@ public class StrobogrammaticNumberII {
             List<String> newList = new ArrayList<>();
             for (String str : result) {
 
-                // 如果i == n， 意味着已经加到最后一层，一个数的第一位不能是0。
+                // 如果i == n，意味着已经加到最后一层，一个数的第一位不能是0。
                 if (i != n) {
                     newList.add("0" + str + "0");
                 }
