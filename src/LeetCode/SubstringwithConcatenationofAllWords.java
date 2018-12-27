@@ -30,7 +30,7 @@ public class SubstringwithConcatenationofAllWords {
     public List<Integer> findSubstring(String s, String[] words) {
         List<Integer> result = new ArrayList<>();
 
-        if (s == null || words == null) {
+        if (s == null || words == null|| s.length()<1 || words.length<1) {
             return result;
         }
 
