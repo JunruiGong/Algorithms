@@ -37,7 +37,7 @@ public class CompareVersionNumbers {
             int compare = v1.compareTo(v2);
 
             // 如果不相等，直接返回结果
-            // 如果相等，继续比较
+            // 如果相等，继续比较下一个
             if (compare != 0) {
                 return compare;
             }
