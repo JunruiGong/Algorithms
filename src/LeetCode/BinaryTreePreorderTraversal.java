@@ -39,7 +39,7 @@ public class BinaryTreePreorderTraversal {
 
         Stack<TreeNode> rights = new Stack<>();
         while (root != null) {
-            result.add(root.val);
+            result.add(root.val);  // 先存入根节点
 
             if (root.right != null) {
                 rights.push(root.right);
@@ -52,5 +52,4 @@ public class BinaryTreePreorderTraversal {
 
         return result;
     }
-
 }
