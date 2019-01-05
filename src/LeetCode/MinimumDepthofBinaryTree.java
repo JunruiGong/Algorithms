@@ -36,7 +36,7 @@ public class MinimumDepthofBinaryTree {
             //   9  20
             //     /
             //    15
-            // 如上图：需要一直计算到15，所以需要使用Math.max()，而不是Math.min()
+            // 如上图：需要一直计算到15(叶节点)，所以需要使用Math.max()，而不是Math.min()
             return Math.max(minDepth(root.left),minDepth(root.right))+1;
         }
 
