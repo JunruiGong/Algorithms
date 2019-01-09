@@ -23,6 +23,7 @@ import java.util.Stack;
  */
 public class BinaryTreeInorderTraversal {
 
+    // 迭代
     public List<Integer> inorderTraversal(TreeNode root) {
 
         List<Integer> result = new ArrayList<>();
@@ -42,5 +43,30 @@ public class BinaryTreeInorderTraversal {
         }
 
         return result;
+    }
+
+    // 递归
+    public List<Integer> inorderTraversal2(TreeNode root) {
+
+        List<Integer> result = new ArrayList<>();
+
+        help(root,result);
+        return result;
+    }
+
+    private void help(TreeNode root,List<Integer> result){
+        if (root==null){
+            return;
+        }
+
+        if (root.left!=null){
+            help(root.left,result);
+        }
+
+        result.add(root.val);
+
+        if (root.right!=null){
+            help(root.right,result);
+        }
     }
 }
