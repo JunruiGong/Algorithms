@@ -51,6 +51,5 @@ public class Combinations {
     @Test
     public void test(){
         System.out.println(combine(4,2));
-
     }
 }
