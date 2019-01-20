@@ -66,7 +66,7 @@ public class FactorCombinations {
         for (int i = start; i <= n; i++) {
             if (n % i == 0) {
                 list.add(i);
-                help(result, list, n / i, i);  // 因为因子可以重复，所以start不需要++
+                help(result, list, n / i, i);  // 因为因子可以重复，所以i不需要++
                 list.remove(list.size() - 1);
             }
         }
