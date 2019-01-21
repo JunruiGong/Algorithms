@@ -43,14 +43,11 @@ public class Subsets {
 
     private static void help(List<List<Integer>> result, List<Integer> list, int[] nums, int index) {
         result.add(new ArrayList<>(list));
-        System.out.println(result);
 
         for (int i = index; i < nums.length; i++) {
             list.add(nums[i]);
-            System.out.println(list);
             help(result, list, nums, i + 1);
             list.remove(list.size() - 1);
-            System.out.println(list);
         }
     }
 
