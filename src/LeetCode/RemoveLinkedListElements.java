@@ -1,7 +1,7 @@
 package LeetCode;
 
 /**
- * Leetcode-203-g-Easy
+ * Leetcode-203-Remove Linked List Elements-Easy
  *
  * Remove all elements from a linked list of integers that have value val.
  *
