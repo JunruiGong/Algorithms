@@ -30,6 +30,10 @@ public class SearchinRotatedSortedArray {
         int start = 0;
         int end = nums.length - 1;
 
+        // 这里使用start + 1 < end，是因为当只有两个数字时
+        // 且这两个数字并不是递增的（如7，0）
+        // 就不能在使用binary search，所以需要跳出循环
+        // 直接手动取比较nums[start], nums[end]与target是否相等﻿
         while (start + 1 < end) {
             int mid = start + (end - start) / 2;
             if (nums[mid] == target) {
