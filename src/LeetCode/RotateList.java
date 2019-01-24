@@ -23,7 +23,7 @@ package LeetCode;
  */
 public class RotateList {
     public ListNode rotateRight(ListNode head, int k) {
-        if (head==null||head.next==null){
+        if (head == null || head.next == null) {
             return head;
         }
 
@@ -31,21 +31,21 @@ public class RotateList {
         int len = 1;
 
         // 得到链表的长度
-        while (index.next!=null){
-            index=index.next;
+        while (index.next != null) {
+            index = index.next;
             len++;
         }
 
         // 形成环路
-        index.next=head;
+        index.next = head;
 
         // 找到需要断开的位置
-        for (int i=1;i<len-k%len;i++){
-            head=head.next;
+        for (int i = 1; i < len - k % len; i++) {
+            head = head.next;
         }
 
         ListNode res = head.next;
-        head.next=null;
+        head.next = null;
 
         return res;
     }
