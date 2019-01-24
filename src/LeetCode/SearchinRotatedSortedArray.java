@@ -56,7 +56,7 @@ public class SearchinRotatedSortedArray {
                     // 判断target是否在这个序列之间
                     start = mid;
                 } else {
-                    // 否则在[start, mid]中间仔寻找
+                    // 否则在[start, mid]中间寻找
                     end = mid;
                 }
             }
