@@ -29,6 +29,8 @@ public class PartitionList {
                 small = smallHead,
                 big = bigHead;
 
+        // 将小于x和大于等于x的数分类
+        // 形成small链表和big链表
         while (head != null) {
             ListNode temp = new ListNode(head.val);
             if (head.val < x) {
@@ -41,6 +43,7 @@ public class PartitionList {
             head = head.next;
         }
 
+        // 将small链表与big链表连接
         small.next = bigHead.next;
         return smallHead.next;
     }
