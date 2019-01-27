@@ -1,7 +1,5 @@
 package LeetCode;
 
-import java.util.LinkedList;
-import java.util.Queue;
 import java.util.Stack;
 
 /**
@@ -34,13 +32,6 @@ public class ImplementQueueusingStacks {
 
     Stack<Integer> input = new Stack<>();
     Stack<Integer> output = new Stack<>();
-
-    /**
-     * Initialize your data structure here.
-     */
-    public MyQueue() {
-
-    }
 
     /**
      * Push element x to the back of queue.
