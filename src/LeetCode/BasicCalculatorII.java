@@ -43,8 +43,8 @@ public class BasicCalculatorII {
             if (Character.isDigit(c)) {
                 num = 10 * num + (c - '0');
             }
-            if (!Character.isDigit(c) && ' ' != s.charAt(i) || i == s.length() - 1) {
-                // 如果c是运算符或者i已经遍历到最后
+            if (!Character.isDigit(c) && ' ' != s.charAt(i) || i == s.length() - 1) {// 如果c是运算符或者i已经遍历到最后
+
                 if (sign == '-') {
                     stack.push(-num);
                 }
