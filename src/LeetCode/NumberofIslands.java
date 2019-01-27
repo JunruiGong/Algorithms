@@ -24,8 +24,8 @@ package LeetCode;
  * Output: 3
  */
 public class NumberofIslands {
-                                //  左      右       下       上
-                                final static int[][] dirs = {{-1, 0}, {1, 0}, {0, -1}, {0, 1}};
+                                        //  左      右       下       上
+    private final static int[][] dirs = {{-1, 0}, {1, 0}, {0, -1}, {0, 1}};
 
     public int numIslands(char[][] grid) {
         if (grid == null || grid.length == 0 || grid[0].length == 0) {
