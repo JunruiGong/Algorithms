@@ -45,11 +45,13 @@ public class FirstMissingPositive {
             }
         }
 
-        for (int i : nums) {
-            System.out.println(i);
+//        for (int i : nums) {
+//            System.out.println(i);
+//
+//        }
 
-        }
 
+        // 找到第一个miss的数
         for (int i = 0; i < nums.length; i++) {
             if (nums[i] != i + 1) {
                 return i + 1;

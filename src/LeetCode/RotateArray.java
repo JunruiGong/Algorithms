@@ -17,6 +17,9 @@ public class RotateArray {
 
     public void rotate(int[] nums, int k) {
 
+        // 这样处理k的原因是：k的大小可能比nums的长度要大
+        // 所以在rotate的过程中，会有rotate回原array的情况
+        // 所以在这种情况下，将之前的一整圈的rotate去掉
         k = k % nums.length;
 
         reverse(nums, 0, nums.length - 1);

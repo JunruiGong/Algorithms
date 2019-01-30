@@ -33,6 +33,9 @@ package LeetCode;
  * 那么，我们要从位置i+1开始重新尝试吗？不需要！为什么？因为前面已经知道，位置i肯定是正积累，
  * 那么，如果从位置i+1开始走更加没法走完全程了，因为没有位置i的正积累了。
  * 同理，也不用从i+2，i+3，...开始尝试。所以我们可以放心地从位置j+1开始尝试。
+ *
+ *
+ * 如果一个数组的总和非负，那么一定可以找到一个起始位置，从他开始绕数组一圈，累加和一直都是非负的
  */
 
 public class GasStation {
@@ -46,8 +49,12 @@ public class GasStation {
         int debt = 0;   // 如果之前走的路油箱剩余为负数的话，将计算该负数的值。
 
         for (int i = 0; i < gas.length; i++) {
+
+            // remain记录油耗剩余为正数的情况
             remain += gas[i] - cost[i];
             if (remain < 0) {
+
+                // 记录所有油耗为负的情况
                 debt += remain;
                 start = i + 1;
                 remain = 0;

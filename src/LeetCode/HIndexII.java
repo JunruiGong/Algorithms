@@ -1,5 +1,7 @@
 package LeetCode;
 
+import org.junit.Test;
+
 /**
  * Leetcode-275-H-Index II
  * Given an array of citations sorted in ascending order (each citation is a non-negative integer) of a researcher,
@@ -36,6 +38,12 @@ public class HIndexII {
         }
 
         return length - low;
+    }
+
+
+    @Test
+    public void test(){
+        System.out.println(hIndex(new int[]{100}));
 
     }
 }
