@@ -21,12 +21,15 @@ public class MinimumSizeSubarraySum {
     public int minSubArrayLen(int s, int[] nums) {
 
         int result = Integer.MAX_VALUE;
-        int left = 0;
+        int left = 0;   // 表示从第left位开始相加
         int sum = 0;
         for (int i = 0; i < nums.length; i++) {
             sum += nums[i];
-            while (left <= i && sum >= s) {
+            while (sum >= s) {
+                // 如果sum大于s，则判断当前subArray的长度(i - left + 1)与之前的result的大小
                 result = Math.min(result, i - left + 1);
+
+                //sum减去最开始的num，起始位置+1
                 sum -= nums[left++];
             }
         }

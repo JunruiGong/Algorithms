@@ -29,6 +29,8 @@ import java.util.PriorityQueue;
  *
  * Follow up:
  * Could you solve it in linear time?
+ *
+ * time: O(nlog(n))
  * */
 public class SlidingWindowMaximum {
     public int[] maxSlidingWindow(int[] nums, int k) {
@@ -36,6 +38,8 @@ public class SlidingWindowMaximum {
             return new int[0];
         }
 
+        // Collections.reverseOrder() 将队列从大到小排列
+        // 优先队列插入，删除操作: O(log(n))
         PriorityQueue<Integer> queue = new PriorityQueue<>(Collections.reverseOrder());
 
         int max;
@@ -44,10 +48,13 @@ public class SlidingWindowMaximum {
         for (int i = 0; i < nums.length; i++) {
             queue.add(nums[i]);
 
+            // 当队列中的个数等于k时，开始记录最大值
             if (i == k - 1) {
                 result[index++] = queue.peek();
             }
             if (queue.size() > k) {
+                // 当队列中的个数大于k时，
+                // 取出最先加入到队列中的数
                 queue.remove(nums[i - k]);
                 result[index++] = queue.peek();
             }

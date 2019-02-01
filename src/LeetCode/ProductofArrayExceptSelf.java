@@ -29,13 +29,19 @@ public class ProductofArrayExceptSelf {
 
         // 先计算每个数左边的乘积
         for (int i = 1; i < nums.length; i++) {
+
+            // result[i - 1]: 表示从0开始乘到i-2的值
+            // 所以result[i - 1] * nums[i - 1] = result[i]
+            // 从0开始乘到i-1的值
             result[i] = result[i - 1] * nums[i - 1];
         }
 
         // 再计算每个数右边的乘积
         int right = 1;
         for (int i = nums.length - 1; i >= 0; i--) {
-
+            // 第一个result[i]表示乘了右边的数之后的结果
+            // 第二个result[i]表示的是：还没有计算右边的数的积，只计算了左边的数的结果
+            // right表示从i到nums.length-1的积
             result[i] = result[i] * right;
             right = right * nums[i];
         }

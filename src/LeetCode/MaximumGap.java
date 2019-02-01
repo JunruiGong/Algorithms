@@ -1,5 +1,7 @@
 package LeetCode;
 
+import org.junit.Test;
+
 import java.util.Arrays;
 
 /**
@@ -40,7 +42,7 @@ public class MaximumGap {
             max = Math.max(max, num);
         }
 
-        // 每个桶之间的差值
+        // 一个桶中最大值和最小值的差值
         // k-th bucket contains all numbers in [min + (k-1)gap, min + k*gap).
         // 需要在每个桶中找出局部最大值和最小值，而最大间距的两个数不会在同一个桶中，而是一个桶的最小值和另一个桶的最大值之间的间距。
         int gap = (int) Math.ceil((double) (max - min) / (nums.length - 1));
@@ -84,5 +86,13 @@ public class MaximumGap {
         maxGap = Math.max(maxGap, max - previous);
 
         return maxGap;
+    }
+
+    @Test
+    public void test(){
+        int[] nums= {1,1,1,1};
+
+        System.out.println(maximumGap(nums));
+
     }
 }

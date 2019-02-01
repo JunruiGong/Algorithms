@@ -25,7 +25,16 @@ public class MaximumSubarray {
 
         int result = dp[0];
         for (int i = 1; i < nums.length; i++) {
-            dp[i] = nums[i] + (dp[i - 1] < 0 ? 0 : dp[i - 1]);
+
+            // 如果前一个数小于0，则我们就不用从前面开始加了，
+            // 因为加上负数之后的和，肯定比本身要小
+            // 直接从当前数开始加，相当于起始位置从i开始
+            if (dp[i - 1] < 0) {
+                dp[i] = nums[i];
+            } else {
+                dp[i] = nums[i] + dp[i - 1];
+            }
+
             result = Math.max(result, dp[i]);
         }
 
@@ -34,7 +43,7 @@ public class MaximumSubarray {
 
     @Test
     public void Test() {
-        int[] array = {1, 3, -4, 2};
+        int[] array = {-2,1,-3,4,-1,2,1,-5,4};
         System.out.println(maxSubArray(array));
     }
 }

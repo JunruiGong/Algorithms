@@ -25,8 +25,27 @@ public class BestTimetoBuyandSellStockWithCooldown {
         }
 
         int n = prices.length;
-        int[] hold = new int[n];
-        int[] unhold = new int[n];
+        int[] hold = new int[n]; // 第i天结束持有股票的最大profit
+        int[] unhold = new int[n];  // 第i天结束不持有股票的最大profit
+
+        /**
+         *
+         * Base case
+         * hold[0] = -prices[0]
+         * hold[1] = max(-prices[1], -prices[0])
+         * unhold[0] = 0
+         *
+         *
+         * hold[i] 取下面情况的最大值
+         * 1. 第i天买入     unhold[i - 2] - prices[i]   (i - 2的原因是：必须中间休息一天)
+         * 2. 第i天没有买入  hold[i-1]
+         *
+         *
+         * unhold[i] 取下面情况的最大值
+         * 1. 第i天卖出     hold[i - 1] + prices[i]
+         * 2. 第i天没有卖出  unhold[i-1]
+         *
+         */
 
         hold[0] = -prices[0];
         for (int i = 1; i < prices.length; i++) {

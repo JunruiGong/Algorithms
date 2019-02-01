@@ -1,8 +1,9 @@
-package LeetCode;
+package Algorithm2;
 
 import org.junit.Test;
 
 import java.util.Arrays;
+import java.util.Comparator;
 
 /**
  * Leetcode-252-Meeting Rooms
@@ -14,6 +15,7 @@ import java.util.Arrays;
  * Given [[0, 30],[5, 10],[15, 20]],
  * return false.
  * */
+
 public class MeetingRooms {
     public class Interval {
         int start;
@@ -35,11 +37,12 @@ public class MeetingRooms {
             return false;
         }
 
-        Arrays.sort(intervals, (a, b) -> a.start - b.start);
+        Arrays.sort(intervals, Comparator.comparingInt(a -> a.start));
 
         int start = intervals[0].start;
         int end = intervals[0].end;
-        for (int i=1;i<intervals.length;i++) {
+
+        for (int i = 1; i < intervals.length; i++) {
             if (intervals[i].start <= end) {
                 return false;
             } else {
@@ -53,8 +56,8 @@ public class MeetingRooms {
 
     @Test
     public void Test(){
-        Interval a = new Interval(0,10);
-        Interval b = new Interval(5,10);
+        Interval a =new Interval(0,10);
+        Interval b =  new Interval(11,12);
         Interval c = new Interval(15,20);
 
         Interval[] intervals={a,b,c};

@@ -1,7 +1,10 @@
 package LeetCode;
 
+import org.junit.Test;
+
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 /**
@@ -45,7 +48,7 @@ public class MergeIntervals {
             return intervals;
         }
 
-        Collections.sort(intervals, (a, b) -> a.start - b.start);  // 后面是比较器
+        Collections.sort(intervals, Comparator.comparingInt(a -> a.start));  // 后面是比较器
 
         int start = intervals.get(0).start;
         int end = intervals.get(0).end;
@@ -53,9 +56,13 @@ public class MergeIntervals {
         List<Interval> result = new ArrayList<>();
 
         for (Interval interval : intervals) {
+
+            // 后一个interval的起点比前一个interval的终点要小，说明存在overlapping
+            // 更新end
             if (interval.start <= end) {
                 end = Math.max(end, interval.end);
             } else {
+                // 否则，保存interval，更新start和end
                 result.add(new Interval(start, end));
                 start = interval.start;
                 end = interval.end;
@@ -64,6 +71,12 @@ public class MergeIntervals {
 
         result.add(new Interval(start, end));
         return result;
+    }
+
+    @Test
+    public void test(){
+
+
 
     }
 }

@@ -30,6 +30,14 @@ package LeetCode;
  */
 public class BestTimetoBuyandSellStockII {
 
+    /**
+     *
+     * 低价买入高价抛出，那么这里我们只需要从第二天开始，
+     * 如果当前价格比之前价格高，则把差值加入利润中，
+     * 因为我们可以昨天买入，今日卖出，
+     * 若明日价更高的话，还可以今日买入，明日再抛出。
+     */
+
     public int maxProfit(int[] prices) {
         if (prices == null || prices.length < 2) {
             return 0;

@@ -31,6 +31,7 @@ public class JumpGameII {
         int curFarthest = 0;
 
         // i最多遍历到nums.length-1，如果到nums.length，result会加一，结果不正确。
+        // 到达最后一个点不需要再跳了
         for (int i = 0; i < nums.length - 1; i++) {
             curFarthest = Math.max(nums[i] + i, curFarthest);
             if (i == curEnd) {

@@ -1,5 +1,7 @@
 package LeetCode;
 
+import org.junit.Test;
+
 /**
  * Leetcode-42-Trapping Rain Water
  *
@@ -10,6 +12,24 @@ package LeetCode;
  *
  * Input: [0,1,0,2,1,0,1,3,2,1,2,1]
  * Output: 6
+ *
+ *
+ * 当前单元能装多少水是取决于左右两边挡板最小值与当前值之差
+ *
+ *          0,1,0,2,1,0,1,3,2,1,2,1
+ *
+ *                        *
+ *                *       * *   *
+ *            *   * *   * * * * * *
+ *          0 1 2 3 4 5 6 7 8 9 0 1
+ *            l
+ *
+ *          假设leftMax = 1, left = 1
+ *          在进行下一个循环时，左边的高度变为0
+ *          此时，leftMax>height[i], 则在i = 2处必定可以放入水
+ *          水量为leftMax - height[i]
+ *
+ *
  * */
 public class TrappingRainWater {
     public int trap(int[] height) {
@@ -20,8 +40,8 @@ public class TrappingRainWater {
 
         int left = 0;
         int right = height.length - 1;
-        int leftMax = 0;
-        int rightMax = 0;
+        int leftMax = 0;  // 左挡板的高度
+        int rightMax = 0; // 右挡板的高度
         int result = 0;
         while (left < right) {
             if (height[left] < height[right]) {
@@ -36,5 +56,15 @@ public class TrappingRainWater {
         }
 
         return result;
+    }
+
+
+    @Test
+    public void test(){
+
+        int[] height = {0,1,0,2,1,0,1,3,2,1,2,1};
+
+        System.out.println(trap(height));
+
     }
 }

@@ -1,6 +1,4 @@
-package LeetCode;
-
-import java.util.Arrays;
+package Algorithm2;
 
 /**
  * Leetcode-253-Meeting Rooms II
@@ -12,6 +10,7 @@ import java.util.Arrays;
  * Given [[0, 30],[5, 10],[15, 20]],
  * return 2.
  * */
+
 public class MeetingRoomsII {
     public class Interval {
         int start;
@@ -41,30 +40,24 @@ public class MeetingRoomsII {
      */
 
     public int minMeetingRooms(Interval[] intervals) {
+
         int[] starts = new int[intervals.length];
         int[] ends = new int[intervals.length];
 
         for (int i = 0; i < intervals.length; i++) {
-
             starts[i] = intervals[i].start;
             ends[i] = intervals[i].end;
         }
 
-        Arrays.sort(starts);
-        Arrays.sort(ends);
         int result = 0;
-        int end = 0;  // 表示第end个会议的结束时间
+        int end = 0;
 
-        for (int i = 0; i < intervals.length; i++) {
-
-            // 如果一个会议的起始时间小于第end个会议的结束时间
-            // 则result++
+        for (int i = 1; i < intervals.length; i++) {
             if (starts[i] < ends[end]) {
                 result++;
             } else {
                 end++;
             }
-
         }
 
         return result;

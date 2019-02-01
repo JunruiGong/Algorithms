@@ -91,7 +91,7 @@ public class FindtheDuplicateNumber {
     public void Test(){
 
         int[] nums = {1,3,4,2,2};
-        findDuplicate2(nums);
+        findDuplicate1(nums);
 
     }
 }

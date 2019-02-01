@@ -21,6 +21,7 @@ public class ContainsDuplicate {
 
         Map<Integer, Integer>map = new HashMap<Integer, Integer>();
 
+
         for(int i :nums){
             if(map.containsKey(i)){
                 return true;

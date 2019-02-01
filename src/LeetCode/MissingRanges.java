@@ -20,7 +20,7 @@ public class MissingRanges {
             return list;
         }
 
-        if (lower < nums[0] ) {
+        if (lower < nums[0]-1 ) {
             list.add(range(lower,nums[0]-1));
         }
 
@@ -30,7 +30,7 @@ public class MissingRanges {
             }
         }
 
-        if (nums[nums.length-1]<upper){
+        if (nums[nums.length-1]+1<upper){
             list.add(range(nums[nums.length-1]+1, upper));
         }
 
@@ -49,7 +49,7 @@ public class MissingRanges {
     public void Test(){
         int[] nums ={0,1,3,50,75};
         List<String> lists = new ArrayList<>();
-        lists = findMissingRanges(nums,0,99);
+        lists = findMissingRanges(nums,-2,77);
 
         for (String list:lists){
             System.out.println(list);

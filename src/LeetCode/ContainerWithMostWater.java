@@ -31,7 +31,12 @@ public class ContainerWithMostWater {
         int left = 0;
         int right = height.length - 1;
         while (left < right) {
+
             result = Math.max(result, Math.min(height[left], height[right]) * (right - left));
+
+            // 如果左边的高度比右边低
+            // 则左边的index++，向右找高度较高的
+            // 反之亦然
             if (height[left] < height[right]) {
                 left++;
             } else {

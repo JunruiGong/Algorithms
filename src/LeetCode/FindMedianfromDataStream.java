@@ -23,6 +23,8 @@ public class FindMedianfromDataStream {
 
 
     // 队列内的顺序按从小到大排列
+    // small中存放小于中位数的数字
+    // large中存放大于中位数的数字
     private Queue<Long> small = new PriorityQueue<>();
     private Queue<Long> large = new PriorityQueue<>();
 

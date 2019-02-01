@@ -48,10 +48,12 @@ public class InsertInterval {
 
         int i = 0;
 
+        // 将intervals中小于newInterval的间隔先存入result中
         while (i < intervals.size() && intervals.get(i).end < newInterval.start) {
             result.add(intervals.get(i++));
         }
 
+        // 合并存在重复的区间
         while (i < intervals.size() && intervals.get(i).start <= newInterval.end) {
             newInterval.start = Math.min(intervals.get(i).start, newInterval.start);
             newInterval.end = Math.max(intervals.get(i).end, newInterval.end);
@@ -60,6 +62,7 @@ public class InsertInterval {
 
         result.add(newInterval);
 
+        // 保存剩余的区间
         while (i < intervals.size()) {
             result.add(intervals.get(i));
             i++;

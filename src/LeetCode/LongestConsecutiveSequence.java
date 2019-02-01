@@ -30,7 +30,7 @@ public class LongestConsecutiveSequence {
         int result = 0;
 
 
-        // 直接遍历hashSet，hashSet里面的数是排好序的
+        // 直接遍历hashSet，hashSet里面的数是排好序的, 从小到大排序
         for (int num : hashSet) {
             int down = num - 1;
             if (!hashSet.contains(down)) {
