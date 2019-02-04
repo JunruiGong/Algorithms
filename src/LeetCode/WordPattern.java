@@ -1,6 +1,8 @@
 package LeetCode;
 
 
+import org.junit.Test;
+
 import java.util.HashMap;
 
 /**
@@ -55,6 +57,37 @@ public class WordPattern {
         }
 
         return true;
+
+    }
+
+    public boolean wordPattern2(String pattern, String str) {
+
+        if(str==null||str.length()<1){
+            return false;
+        }
+
+        int index =0;
+        for(int i=0;i<pattern.length();i++){
+            if(index<str.length() &&pattern.charAt(i)==str.charAt(index)){
+                while(index<str.length()){
+                    if(str.charAt(index++)==' '){
+                        break;
+                    }
+                }
+            }else{
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    @Test
+    public void test(){
+
+        String pattern ="abba";
+        String str = "dog cat cat dog";
+        wordPattern2(pattern,str);
 
     }
 }

@@ -21,8 +21,6 @@ import java.util.HashMap;
 public class RansomNote {
     public boolean canConstruct(String ransomNote, String magazine) {
 
-        HashMap<Character,Integer> hashMap = new HashMap<>();
-
         int[] characCount = new int[26];
 
         for (int i =0;i<magazine.length();i++){
@@ -38,4 +36,24 @@ public class RansomNote {
         return true;
     }
 
+    public boolean canConstruct2(String ransomNote, String magazine) {
+
+        HashMap<Character, Integer> map = new HashMap<>();
+
+        for (int i = 0; i < magazine.length(); i++) {
+            int newCount = map.getOrDefault(magazine.charAt(i), 0) + 1;
+            map.put(magazine.charAt(i), newCount);
+        }
+
+        for (int i = 0; i < ransomNote.length(); i++) {
+            int newCount = map.getOrDefault(ransomNote.charAt(i), 0) - 1;
+            if (newCount < 0) {
+                return false;
+            }
+
+            map.put(ransomNote.charAt(i), newCount);
+        }
+
+        return true;
+    }
 }

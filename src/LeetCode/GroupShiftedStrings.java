@@ -37,26 +37,37 @@ public class GroupShiftedStrings {
 
         HashMap<String, List<String>> hashMap = new HashMap<>();
 
-        for (int i = 0; i < strings.length; i++) {
+        for (String string : strings) {
 
-            char[] ch = strings[i].toCharArray();
+            char[] ch = string.toCharArray();
             if (ch.length > 0) {
-                int adjust = ch[i] - 'a';
+                int diff = ch[0] - 'a';
                 for (int j = 0; j < ch.length; j++) {
                     // 计算所有的字母对'a'的偏移量，
-                    // 如果两个字符川的偏移量相同，则可以认为这两个字符串在同一组中。
-                    ch[j] = (char) ((ch[j] - 'a' - adjust + 26) % 26 + 'a');
+                    // 如果两个字符串的偏移量相同，则可以认为这两个字符串在同一组中。
+
+                    // 字符串的每个字母和首字符的相对距离都是相等的，
+                    // 比如abc和efg互为偏移，对于abc来说，b和a的距离是1，c和a的距离是2，
+                    // 对于efg来说，f和e的距离是1，g和e的距离是2。
+                    // az和yx，z和a的距离是25，x和y的距离也是25(直接相减是-1，这就是要加26然后取余的原因)，
+                    // 那么这样的话，所有互为偏移的字符串都有个unique的距离差
+
+                    if (ch[j] - diff >= 'a') {
+                        ch[j] = (char) (ch[j] - diff);
+                    } else {
+                        ch[j] = (char) (ch[j] - diff + 26);
+                    }
                 }
             }
 
             String key = new String(ch);
             if (hashMap.containsKey(key)) {
                 List<String> list = hashMap.get(key);
-                list.add(strings[i]);
+                list.add(string);
 
             } else {
                 List<String> list = new ArrayList<>();
-                list.add(strings[i]);
+                list.add(string);
                 hashMap.put(key, list);
             }
         }

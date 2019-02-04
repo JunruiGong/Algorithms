@@ -44,13 +44,15 @@ public class GroupAnagrams {
 
             if (hashMap.containsKey(str)) {
                 // 从lists中取出list并添加新的字符串
-                List<String> list = lists.get(hashMap.get(str));
+                List<String> list = lists.get(hashMap.get(str));  // 通过hashmap中存入的size，相当于lists中的index，可以通过index找到对应的list
                 list.add(strs[i]);
 
             } else {
                 List<String> list = new ArrayList<>();
                 list.add(strs[i]);  // list放sort前的字符串
-                hashMap.put(str, lists.size());  //hashmap放sort之后的字符串
+
+                //hashmap放sort之后的字符串
+                hashMap.put(str, lists.size());  // 当在hashmap中新存入一个string，lists中的size都会变化，知道这个size就能知道是具体哪个list
                 lists.add(list);
             }
         }

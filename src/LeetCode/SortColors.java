@@ -42,6 +42,8 @@ public class SortColors {
                 index++;
             } else {
                 // 当数为2时，将其放在最右边
+                // 此时index不需要++，因为如果遍历到最后一个数
+                // 会导致outOfBounds
                 swap(nums, index, right--);
             }
         }

@@ -24,10 +24,12 @@ public class MergeSortedArray {
         int j = n - 1;
         int k = m + n - 1;
 
+        // 从后往前存放
         while (i >= 0 && j >= 0) {
             nums1[k--] = nums1[i] >= nums2[j] ? nums1[i--] : nums2[j--];
         }
 
+        // 如果nums2中没有遍历完，则将剩余数字存放到nums1中
         while (j >= 0) {
             nums1[k--] = nums2[j--];
         }

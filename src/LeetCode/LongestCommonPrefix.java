@@ -28,6 +28,10 @@ public class LongestCommonPrefix {
 
         String result = strs[0];
         for (int i = 1; i < strs.length; i++) {
+
+            // String.indexOf()
+            // This method returns the index within this string of the first occurrence of the specified substring.
+            // If it does not occur as a substring, -1 is returned.
             while (strs[i].indexOf(result) != 0) {
                 // 如果result在strs[i]中不存在，则缩短result
                 result = result.substring(0, result.length() - 1);

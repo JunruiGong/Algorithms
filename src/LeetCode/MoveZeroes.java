@@ -28,7 +28,6 @@ public class MoveZeroes {
                 swap(nums, i, j++);
             }
         }
-
     }
 
     private void swap(int[] nums, int i, int j) {

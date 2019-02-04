@@ -1,5 +1,7 @@
 package LeetCode;
 
+import org.junit.Test;
+
 /**
  * Leetcode-151-Reverse Words in a String
  *
@@ -30,4 +32,40 @@ public class ReverseWordsinaString {
 
         return sb.toString().trim();
     }
+
+
+    public String reverseWords2(String s) {
+        if(s==null||s.length()<1){
+            return s;
+        }
+
+        s = s.trim();
+
+        String[] strSplit = s.split(" ");
+
+        int index = strSplit.length-1;
+
+        StringBuilder sb = new StringBuilder();
+
+        while(index>=0){
+
+            sb.append(strSplit[index]);
+            if(index!=0){
+                sb.append(" ");
+            }
+            index--;
+        }
+
+        return sb.toString();
+    }
+
+
+    @Test
+    public void test(){
+
+        String s ="   a   b ";
+
+        System.out.println(reverseWords2(s));
+    }
+
 }

@@ -59,12 +59,37 @@ public class IsomorphicStrings {
         return true;
     }
 
+    public boolean isIsomorphic2(String s, String t) {
+
+        if(s==null||t==null){
+            return true;
+        }
+
+        HashMap<Character,Character> map= new HashMap<>();
+
+        for(int i=0;i<s.length();i++){
+            char a  = s.charAt(i);
+            char b = t.charAt(i);
+
+            if(map.containsKey(a) && map.get(a)==b){
+                continue;
+            }else if(map.containsKey(a) && map.get(a)!=b){
+                return false;
+            }else if(!map.containsKey(a) && !map.containsValue(b)){
+                map.put(a,b);
+            }else{
+                return false;
+            }
+        }
+        return false;
+    }
+
     @Test
     public void Test(){
 
-        String s = "ab";
-        String t = "aa";
+        String s = "egg";
+        String t = "add";
 
-        isIsomorphic(s,t);
+        isIsomorphic2(s,t);
     }
 }

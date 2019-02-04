@@ -1,4 +1,4 @@
-package LeetCode;
+package Algorithm2;
 
 /**
  * Leetcode-358-Rearrange String k Distance Apart
@@ -34,44 +34,13 @@ package LeetCode;
  * Special thanks to @elmirap for adding this problem and creating all test cases.
  */
 public class RearrangeStringkDistanceApart {
+
     public String rearrangeString(String s, int k) {
-        if (s == null || s.length() < 1) {
+        if(s==null||s.length()<1){
             return "";
         }
 
-        int[] count = new int[26];
-        int[] valid = new int[26];
+        return "";
 
-        for (char c : s.toCharArray()) {
-            count[c - 'a']++;
-        }
-
-        StringBuilder stringBuilder = new StringBuilder();
-        for (int i = 0; i < s.length(); i++) {
-            int nextLetter = findNextLetter(count, valid, i);
-            if (nextLetter == -1) {
-                return "";
-            }
-            stringBuilder.append((char) ('a' + nextLetter));
-            valid[nextLetter] = i + k;
-            count[nextLetter]--;
-
-        }
-
-        return stringBuilder.toString();
-
-    }
-
-    private int findNextLetter(int[] count, int[] valid, int index) {
-
-        int max = 0;
-        int result = -1;
-        for (int i = 0; i < count.length; i++) {
-            if (count[i] > max && valid[i] <= index) {
-                result = i;
-                max = count[i];
-            }
-        }
-        return result;
     }
 }

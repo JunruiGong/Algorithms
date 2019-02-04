@@ -41,8 +41,18 @@ public class WiggleSubsequence {
             return 0;
         }
 
+        // 用于记录在i处最大wiggle sequence的长度
         int[] up = new int[nums.length];
         int[] down = new int[nums.length];
+
+        // up position: nums[i] > nums[i-1]
+        // down position: nums[i] < nums[i-1]
+        // equal position: nums[i] = nums[i-1]
+
+        // If nums[i] > nums[i-1], that means it wiggles up. the element before it must be a down position. so up[i] = down[i-1] + 1; down[i] keeps the same with before.
+        // If nums[i] < nums[i-1], that means it wiggles down. the element before it must be a up position. so down[i] = up[i-1] + 1; up[i] keeps the same with before.
+        // If nums[i] == nums[i-1], that means it will not change anything becasue it didn't wiggle at all. so both down[i] and up[i] keep the same.
+
 
         up[0] = 1;
         down[0] = 1;
